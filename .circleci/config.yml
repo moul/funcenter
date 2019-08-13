@@ -7,17 +7,11 @@ executors:
       - image: circleci/golang:1.12
     environment:
       GO111MODULE: "on"
-      DOCKER_IMAGE: moul/funcenter
-
-  docker:
-    docker:
-      - image: docker:18.06.3-ce-git
 
 orbs:
   codecov: codecov/codecov@1.0.5
   moul: moul/build@1.5.0
   retry: moul/retry@0.6.0
-  docker: circleci/docker@0.5.13
   #dl: moul/dl@1.7.0
   tools: gotest/tools@0.0.9
 
@@ -26,10 +20,6 @@ jobs:
     executor: golang
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - go-mod-v1-{{ checksum "go.sum" }}
-            - go-mod-v1-
       - retry/install
       - tools/mod-download
       - tools/mod-tidy-check
@@ -39,23 +29,8 @@ jobs:
       - run: PATH=$PATH:$(pwd)/bin retry -m 3 make lint
       - codecov/upload:
           file: coverage.txt
-      - save_cache:
-          key: go-mod-v1-{{ checksum "go.sum" }}
-          paths:
-            - /go/pkg/mod
-
-  docker-build:
-    executor: docker
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - docker/build:
-          image: moul/funcenter
-      #- docker/dockerlint
 
 workflows:
   main:
     jobs:
       - go-build
-      - docker-build

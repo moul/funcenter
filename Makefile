@@ -3,6 +3,9 @@ GO ?= go
 .PHONY: all
 all: test lint examples
 
+.PHONY: install
+install: examples
+
 .PHONY: examples
 examples:
 	cd examples; $(GO) install ./...
