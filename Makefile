@@ -1,5 +1,5 @@
 GO ?= go
-DOCKER_IMAGE ?= moul/golang-repo-template
+DOCKER_IMAGE ?= moul/funcenter
 
 .PHONY: install
 install:
