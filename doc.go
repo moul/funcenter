@@ -12,5 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package main is ...
-package main // import "moul.io/funcenter"
+package funcenter // import "moul.io/funcenter"
