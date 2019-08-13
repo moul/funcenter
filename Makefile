@@ -22,6 +22,12 @@ test:
 	  fi); done
 	mv /tmp/coverage.txt .
 
+.PHONY: go-mod-tidy-all
+go-mod-tidy-all:
+	set -e; for dir in `find . -type f -name "go.mod" | sed 's@/[^/]*$$@@' | sort | uniq`; do ( set -xe; \
+	  cd $$dir; \
+	  go mod tidy); done
+
 .PHONY: lint
 lint:
 	golangci-lint run --verbose ./...
