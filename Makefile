@@ -28,6 +28,12 @@ go-mod-tidy-all:
 	  cd $$dir; \
 	  go mod tidy); done
 
+.PHONY: go-mod-update-all
+go-mod-update-all:
+	set -e; for dir in `find . -type f -name "go.mod" | sed 's@/[^/]*$$@@' | sort | uniq`; do ( set -xe; \
+	  cd $$dir; \
+	  go get -u); done
+
 .PHONY: lint
 lint:
 	golangci-lint run --verbose ./...
