@@ -4,7 +4,7 @@ go 1.12
 
 require (
 	github.com/kr/pretty v0.1.0 // indirect
-	go.uber.org/zap v1.10.0
+	go.uber.org/zap v1.15.0
 	moul.io/funcenter v1.0.0
 	moul.io/funcenter/logging/zap v0.0.0
 )
