@@ -3,7 +3,7 @@ module moul.io/funcenter/logging/zap
 go 1.12
 
 require (
-	go.uber.org/zap v1.15.0
+	go.uber.org/zap v1.16.0
 	moul.io/funcenter v1.0.0
 )
 
