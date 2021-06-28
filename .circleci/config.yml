@@ -4,12 +4,12 @@ executors:
   golang:
     working_directory: /go/src/moul.io/funcenter
     docker:
-      - image: circleci/golang:1.14
+      - image: circleci/golang:1.16
     environment:
       GO111MODULE: "on"
 
 orbs:
-  codecov: codecov/codecov@1.1.6
+  codecov: codecov/codecov@1.2.3
   moul: moul/build@1.16.0
   retry: moul/retry@0.6.0
   #dl: moul/dl@1.7.0
