@@ -9,7 +9,7 @@ executors:
       GO111MODULE: "on"
 
 orbs:
-  codecov: codecov/codecov@1.1.6
+  codecov: codecov/codecov@4.0.1
   moul: moul/build@1.16.0
   retry: moul/retry@0.6.0
   #dl: moul/dl@1.7.0
